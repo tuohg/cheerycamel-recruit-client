@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import {NavBar, WingBlank, List, InputItem,WhiteSpace, Radio, Button} from 'antd-mobile'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
+import { register } from '../../redux/actions'
 
-export default class Register extends Component { 
+class Register extends Component { 
     state = {
         username:'',
         password:'',
@@ -20,16 +23,22 @@ export default class Register extends Component {
     }
 
     register =()=>{
-        console.log(JSON.stringify(this.state))
+        // console.log(JSON.stringify(this.state))
+        this.props.register(this.state)
     }
 
     render() {
         const {type} =this.state
+        const {redirectTo, msg}= this.props
+        if (redirectTo) {
+            return <Redirect to ={redirectTo}/>
+        }
         return ( 
             <div>
                 <NavBar>CheeryCamel Recruit</NavBar>
                 <Logo/>
                 <WingBlank>
+                    {msg ? <p className='error-msg'>{msg}</p>:null}
                     <List>
                         <InputItem
                             placeholder='Enter username'
@@ -67,3 +76,8 @@ export default class Register extends Component {
         ) 
     }
 }
+
+export default connect(
+    state => state.user,
+    {register}
+)(Register)
