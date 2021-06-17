@@ -33,7 +33,7 @@ class CandidateInfo extends Component{
                 <InputItem onChange={val=>this.handleChange('post',val)}>Position:</InputItem>
                 <TextareaItem title="Resume:" 
                                 rows={3}
-                                onChange={val => this.handleChange('info',val)}/>
+                                onChange={val => this.handleChange('profile',val)}/>
                 <Button type='primary' onClick={()=>this.props.updateUser(this.state)}>Save</Button>
             </div>
         )

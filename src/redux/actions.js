@@ -1,6 +1,6 @@
 import { AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_USER } from './action-types'
 
-import { reqRegister, reqLogin, reqUpdateUser } from '../api'
+import { reqRegister, reqLogin, reqUpdateUser, reqUser } from '../api'
 
 const errorMsg = msg => ({ type: ERROR_MSG, data: msg })
 
@@ -48,6 +48,18 @@ export const login = ({ username, password }) => {
 export const updateUser = user => {
     return async dispatch => {
         const response = await reqUpdateUser(user)
+        const result = response.data
+        if (result.code === 0) {
+            dispatch(receiveUser(result.data))
+        } else {
+            dispatch(resetUser(result.msg))
+        }
+    }
+}
+
+export const getUser = () => {
+    return async dispatch => {
+        const response = await reqUser()
         const result = response.data
         if (result.code === 0) {
             dispatch(receiveUser(result.data))

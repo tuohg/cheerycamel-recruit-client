@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import {NavBar, WingBlank, List, InputItem,WhiteSpace, Radio, Button} from 'antd-mobile'
+import {NavBar, WingBlank, List, InputItem,WhiteSpace, Radio, Button, Toast} from 'antd-mobile'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
 import { register } from '../../redux/actions'
+
 
 class Register extends Component { 
     state = {
@@ -25,6 +26,12 @@ class Register extends Component {
     register =()=>{
         // console.log(JSON.stringify(this.state))
         this.props.register(this.state)
+        setTimeout(()=>{
+            const {msg}=this.props
+            if (msg) {
+                Toast.fail(msg, 2)
+            }
+        },10)
     }
 
     render() {
@@ -33,12 +40,14 @@ class Register extends Component {
         if (redirectTo) {
             return <Redirect to ={redirectTo}/>
         }
+
         return ( 
             <div>
                 <NavBar>CheeryCamel Recruit</NavBar>
                 <Logo/>
                 <WingBlank>
-                    {msg ? <p className='error-msg'>{msg}</p>:null}
+                    {/* {msg ? <p className='error-msg'>{msg}</p>:null} */}
+                    
                     <List>
                         <InputItem
                             placeholder='Enter username'

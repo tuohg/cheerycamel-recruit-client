@@ -37,7 +37,7 @@ class BossInfo extends Component{
                 <InputItem onChange={val=>this.handleChange('salary',val)}>Salary:</InputItem>
                 <TextareaItem title="Summary:" 
                                 rows={3}
-                                onChange={val => this.handleChange('info',val)}/>
+                                onChange={val => this.handleChange('profile',val)}/>
                 <Button type='primary' onClick={()=>this.props.updateUser(this.state)}>Save</Button>
             </div>
         )

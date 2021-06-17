@@ -4,7 +4,7 @@ export function getRedirectPath(type, avatar) {
     path += type === 'boss' ? '/boss' : '/candidate'
 
     if (!avatar) {
-        path = + 'profile'
+        path += 'info'
     }
 
     return path
