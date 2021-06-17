@@ -51,7 +51,7 @@ class Login extends Component {
                         <WhiteSpace/>
                         <Button type='primary' onClick={this.login}>Sign In</Button>
                         <WhiteSpace/>
-                        <Button onClick={this.toRegister}>Create an ancount</Button>
+                        <Button onClick={this.toRegister}>Sign Up</Button>
                     </List>
                 </WingBlank>
             </div>

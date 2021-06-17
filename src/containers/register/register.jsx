@@ -75,9 +75,9 @@ class Register extends Component {
                                 onClick={()=>{this.handleChange('type','boss')}}>Boss</Radio>
                         </List.Item>
                         <WhiteSpace/>
-                        <Button type='primary' onClick={this.register}>Registeration</Button>
+                        <Button type='primary' onClick={this.register}>Sign Up</Button>
                         <WhiteSpace/>
-                        <Button onClick={this.toLogin}>Login in</Button>
+                        <Button onClick={this.toLogin}>Sign in</Button>
 
                     </List>
                 </WingBlank>
