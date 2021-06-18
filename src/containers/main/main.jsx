@@ -21,16 +21,16 @@ class Main extends Component {
         {
             path: '/boss',
             component: Boss,
-            title:'Boss List',
-            icon: 'boss',
-            text:'Boss'
+            title:'Candidate List',
+            icon: 'candidate',
+            text:'Candidate'
         },
         {
             path:'/candidate',
             component: Candidate,
-            title:"Candidate List",
-            icon:'candidate',
-            text:'Candidate'
+            title:"Boss List",
+            icon:'boss',
+            text:'Boss'
         },
         {
             path:'/message',

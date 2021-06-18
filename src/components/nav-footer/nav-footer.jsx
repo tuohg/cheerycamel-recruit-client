@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom'
 
 const Item = TabBar.Item
 
-class NavFooter extends React.Component{
+class NavFooter extends Component{
     static propTypes = {
         navList: PropTypes.array.isRequired
     }

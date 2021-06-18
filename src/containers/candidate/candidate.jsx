@@ -1,11 +1,21 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
-export default class Candidate extends Component{
+import {getUserList} from '../../redux/actions'
+import UserList from '../../components/user-list/user-list'
+
+class Candidate extends Component{
+
+    componentDidMount(){
+        this.props.getUserList('boss')
+    }
+
     render() {
-        return (
-            <div>
-                Candidate List
-            </div>
-        )
+        return <UserList userList={this.props.userList}></UserList>
     }
 }
+
+export default connect(
+    state => ({userList: state.userList}),
+    {getUserList}
+)(Candidate)
