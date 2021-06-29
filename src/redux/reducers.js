@@ -83,7 +83,7 @@ function chat(state = initChat, action) {
                         return msg
                     }
                 }),
-                // users: state.users,
+                users: state.users,
                 unReadCount: state.unReadCount - count
             }
         default:

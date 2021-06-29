@@ -25,19 +25,19 @@ class BossInfo extends Component{
 
     render() {
         const {user} = this.props
-        if (user.avatar) {
+        if (user.avatar && user.profile && user.post && user.company && user.salary) {
             return <Redirect to = '/boss'/>
         }
         return (
             <div>
                 <NavBar>Boss profile</NavBar>
-                <AvatarSelector setAvatar={this.setAvatar} />
-                <InputItem onChange={val=>this.handleChange('post',val)}>Position:</InputItem>
-                <InputItem onChange={val=>this.handleChange('company',val)}>Company:</InputItem>
-                <InputItem onChange={val=>this.handleChange('salary',val)}>Salary:</InputItem>
+                <AvatarSelector setAvatar={this.setAvatar} icon={user.avatar}/>
+                <InputItem onChange={val=>this.handleChange('post',val)} value={user.post}>Position:</InputItem>
+                <InputItem onChange={val=>this.handleChange('company',val)} value={user.company}>Company:</InputItem>
+                <InputItem onChange={val=>this.handleChange('salary',val)} value={user.salary}>Salary:</InputItem>
                 <TextareaItem title="Summary:" 
                                 rows={3}
-                                onChange={val => this.handleChange('profile',val)}/>
+                                onChange={val => this.handleChange('profile',val)} value={user.profile}/>
                 <Button type='primary' onClick={()=>this.props.updateUser(this.state)}>Save</Button>
             </div>
         )

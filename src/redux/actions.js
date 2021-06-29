@@ -57,7 +57,7 @@ async function getMsgList(dispatch, userid) {
 }
 
 export const sendMsg = ({ from, to, content }) => {
-    return async dispatch => {
+    return dispatch => {
         console.log('send message ', { from, to, content });
         // initIO()
         io.socket.emit('sendMsg', { from, to, content })

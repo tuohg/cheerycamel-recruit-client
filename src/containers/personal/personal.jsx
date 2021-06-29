@@ -33,10 +33,17 @@ class Personal extends Component{
                     img={<img src={require(`../../assets/images/avatar1.png`)} style={{width:50}} alt="avatar"/>}
                     title={username}
                     message={company}
+
+
                 />
 
                 <List renderHeader={()=> 'Relative info'}>
-                    <Item multipleLine>
+                    <Item multipleLine 
+                        onClick={()=>{
+                            console.log(this.props);
+                            this.props.history.replace(`/${this.props.user.type}Info`)
+                        }}
+                    >
                         <Brief>Position: {post}</Brief>
                         <Brief>Summary: {profile}</Brief>
                         {salary?<Brief>Salary: {salary}</Brief>:null}

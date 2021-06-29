@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import Cookies from 'js-cookie'
 import {connect} from 'react-redux'
+import Cookies from 'js-cookie'
 import {NavBar} from 'antd-mobile'
 
 import BossInfo from '../boss-info/boss-info'
@@ -14,8 +14,8 @@ import NotFound from '../../components/not-found/not-found'
 import NavFooter from '../../components/nav-footer/nav-footer'
 import Chat from '../chat/chat'
 
-import {getUser} from '../../redux/actions'
 import {getRedirectPath} from '../../utils'
+import {getUser} from '../../redux/actions'
 
 class Main extends Component { 
     navList=[
@@ -77,8 +77,10 @@ class Main extends Component {
                 this.navList[0].hide =true
             }
         }
-
+        
         const currentNav = this.navList.find(nav => nav.path === pathname)
+
+        const unReadCount = this.props.unReadCount
 
         return ( 
             <div>
@@ -94,13 +96,16 @@ class Main extends Component {
                     <Route component={NotFound}/>
                 </Switch>
 
-                {currentNav?<NavFooter unReadCount={this.props.unReadCount} navList={this.navList}/>:null}
+                {currentNav?<NavFooter navList={this.navList} unReadCount={unReadCount}/>:null}
             </div>
         ) 
     }
 }
 
 export default connect(
-    state => ({user:state.user}),
+    state => ({
+        user:state.user,
+        unReadCount: state.chat.unReadCount
+    }),
     {getUser}
 )(Main)

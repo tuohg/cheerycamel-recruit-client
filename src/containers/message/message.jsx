@@ -19,14 +19,16 @@ function getLastMsgs(chatMsgs, userid) {
                 msg.unReadCount = 1
             }
         }else{
+            const unReadCount = lastMsg.unReadCount+msg.unReadCount
             if (msg.create_time>lastMsg.create_time) {
                 lastMsgsObj[chatId] = msg
                 msg.unReadCount = lastMsg.unReadCount
             }
 
-            if (!msg.read && userid === msg.to) {
-                msg.unReadCount++
-            }
+            // if (!msg.read && userid === msg.to) {
+            //     msg.unReadCount++
+            // }
+            lastMsgsObj[chatId].unReadCount=unReadCount
         }
     })
 
@@ -35,11 +37,14 @@ function getLastMsgs(chatMsgs, userid) {
     lastMsgs.sort(function (msg1, msg2) {
         return msg2.create_time-msg1.create_time
     })
-
+    console.log(lastMsgs);
     return lastMsgs
 }
 
 class Message extends Component{
+    // constructor(props){
+    //     super(props)
+    // }
     render() {
         const {user, chat} = this.props
         const meId = user._id
@@ -50,7 +55,7 @@ class Message extends Component{
             <List style={{marginTop:50, marginBottom:50}}>
                 {
                     lastMsgs.map(msg => {
-                        const targetId = msg.from ===meId?msg.to:msg.from
+                        const targetId = msg.to ===meId ? msg.from : msg.to
                         const targetUser = users[targetId]
                         const avatarImg = targetUser.avatar ? require(`../../assets/images/${targetUser.avatar}.png`):null
                         return(
@@ -73,5 +78,6 @@ class Message extends Component{
 }
 
 export default connect(
-    state => ({user: state.user, chat: state.chat})
+    state => ({user: state.user, chat: state.chat}),
+    {}
 )(Message)
