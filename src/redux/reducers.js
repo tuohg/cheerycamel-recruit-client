@@ -31,7 +31,7 @@ function user(state = initUser, action) {
     switch (action.type) {
         case AUTH_SUCCESS:
             const redirectTo = getRedirectPath(action.data.type, action.data.avatar)
-            console.log(redirectTo);
+            // console.log(redirectTo);
             return { ...action.data, redirectTo }
         case ERROR_MSG:
             return { ...state, msg: action.data }

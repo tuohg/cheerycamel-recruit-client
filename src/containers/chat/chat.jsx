@@ -23,12 +23,12 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        console.log('componentDidMount '+document.body.scrollHeight);
+        // console.log('componentDidMount '+document.body.scrollHeight);
         window.scrollTo(0, document.body.scrollHeight)
     }
 
     componentDidUpdate(){
-        console.log('componentDidUpdate '+document.body.scrollHeight);
+        // console.log('componentDidUpdate '+document.body.scrollHeight);
         window.scrollTo(0, document.body.scrollHeight)
     }
     
@@ -64,7 +64,7 @@ class Chat extends Component {
     render(){
         const {user} = this.props
         const {chatMsgs, users} = this.props.chat
-        console.log(this.props);
+        // console.log(this.props);
         // debugger
         const targetId = this.props.match.params.userid
         const meId = user._id

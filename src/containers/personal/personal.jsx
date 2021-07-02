@@ -25,7 +25,7 @@ class Personal extends Component{
         ])
     }
     render() {
-        const {username, avatar, post, profile, salary, company} = this.props.user
+        const {username, post, profile, salary, company} = this.props.user
 
         return (
             <div style={{marginTop:50}}>
@@ -40,7 +40,7 @@ class Personal extends Component{
                 <List renderHeader={()=> 'Relative info'}>
                     <Item multipleLine 
                         onClick={()=>{
-                            console.log(this.props);
+                            // console.log(this.props);
                             this.props.history.replace(`/${this.props.user.type}Info`)
                         }}
                     >

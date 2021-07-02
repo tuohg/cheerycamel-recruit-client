@@ -37,7 +37,7 @@ function getLastMsgs(chatMsgs, userid) {
     lastMsgs.sort(function (msg1, msg2) {
         return msg2.create_time-msg1.create_time
     })
-    console.log(lastMsgs);
+    // console.log(lastMsgs);
     return lastMsgs
 }
 
